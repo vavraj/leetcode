@@ -11,25 +11,19 @@ using namespace std;
 //User function Template for C++
 class Solution
 {
-    string reverse(string str)
-    {
-        stack<char>st;
-        for(int i=0;i<str.length();i++)
-        {
-            st.push(str[i]);
-        }
-        int i=0;
-        while(!st.empty())
-        {
-            str[i++]=st.top();
-            st.pop();
-        }
-        return str;
-    }
+    // vaibhav
+    // 0123456=7
     public:
     string reverseWord(string str)
     {
-        return reverse(str);
+        // Your code goes here
+        string ans;
+        for(int i=str.length()-1;i>=0;i--)
+        {
+            // ans[str.length()-i-1]=str[i];
+            ans.push_back(str[i]);
+        }
+        return ans;
     }
 };
 
