@@ -24,7 +24,7 @@ public:
         }
     }
     int minSideJumps(vector<int>& obstacles) {
-        vector<vector<int> >dp(4,vector<int>(obstacles.size()+1,-1));
+        vector<vector<int> >dp(4,vector<int>(obstacles.size(),-1));
 
         return solveMem(obstacles,0,2,dp);
         
