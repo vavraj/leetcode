@@ -1,32 +1,36 @@
 class Solution {
 public:
-    
-    int solveMem(vector<int>&obstacles,int pos,int Currlane,vector<vector<int> >&dp){
-        int n=obstacles.size()-1;
-        if(pos==n)
-            return 0;
-        if(dp[Currlane][pos]!=-1)
-            return dp[Currlane][pos];
+  int solveTab(vector<int>&obstacles,vector<vector<int> >&dp){
         
-        if(obstacles[pos+1]!=Currlane){
-            return solveMem(obstacles,pos+1,Currlane,dp);
+    int n=obstacles.size()-1;
+        dp[0][n]=0;
+        dp[1][n]=0;
+        dp[2][n]=0;
+        dp[3][n]=0;
+        
+        for(int Currpos=n-1;Currpos>=0;Currpos--){
+            for(int Currlane=1;Currlane<=3;Currlane++){
+                if(obstacles[Currpos+1]!=Currlane){
+            dp[Currlane][Currpos] =dp[Currlane][Currpos+1];
         }
         else{
-            int ans=INT_MAX;
+            int ans=1e9;
             for(int i=1;i<=3;i++){
-                if(Currlane!=i && obstacles[pos]!=i)
+                if(Currlane!=i && obstacles[Currpos]!=i)
                 {
-                    ans= min(ans,1 + solveMem(obstacles,pos,i,dp));
+                    ans= min(ans,1 + dp[i][Currpos+1]);
                 }
             }
-            dp[Currlane][pos]=ans;
-           return dp[Currlane][pos];
+           dp[Currlane][Currpos] = ans;
         }
+            }
+        }
+        return min(dp[2][0],min(dp[1][0]+1,dp[3][0]+1));
     }
     int minSideJumps(vector<int>& obstacles) {
-        vector<vector<int> >dp(4,vector<int>(obstacles.size(),-1));
+        vector<vector<int> >dp(4,vector<int>(obstacles.size(),INT_MAX));
 
-        return solveMem(obstacles,0,2,dp);
+        return solveTab(obstacles,dp);
         
         
     }
