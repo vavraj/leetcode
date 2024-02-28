@@ -17,7 +17,7 @@ public:
             next=curr;
         }
         
-        return next[0];
+        return curr[0];
     }
     int maxSatisfaction(vector<int>& satisfaction) {
         
