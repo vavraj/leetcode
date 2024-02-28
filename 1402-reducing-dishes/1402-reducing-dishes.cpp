@@ -3,7 +3,7 @@ public:
    
     int solveTab(vector<int>&satisfaction){
         int n=satisfaction.size();
-        // vector<vector<int> >dp(n+1,vector<int>(n+1,0));
+
             vector<int>curr(n+1,0);
             vector<int>next(n+1,0);
         
@@ -17,7 +17,7 @@ public:
             next=curr;
         }
         
-        return curr[0];
+        return next[0];
     }
     int maxSatisfaction(vector<int>& satisfaction) {
         
