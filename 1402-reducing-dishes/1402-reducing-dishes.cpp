@@ -9,10 +9,10 @@ public:
         
         for(int index=n-1;index>=0;index--){
             for(int time=index;time>=0;time--){
-                int include=                                 ((time+1)*satisfaction[index])+next[time+1];
-        int exclude=0+next[time];
+                int include=((time+1)*satisfaction[index])+next[time+1];
+                int exclude=0+next[time];
         
-        curr[time]=max(include,exclude);
+                curr[time]=max(include,exclude);
             }
             next=curr;
         }
