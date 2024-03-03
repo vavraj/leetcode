@@ -1,21 +1,22 @@
 class Solution {
-public:
-        int solve(int n,vector<int>&dp){
-                if(n==0 || n==1){
-                        return 1;
+public: 
+        int solveTab(int n){
+                vector<int>dp(n+1,0);
+                dp[0]=1;
+                dp[1]=1;
+                for(int i=2;i<=n;i++){
+                        
+                int oneStep=dp[i-1];
+                int twoStep=dp[i-2];
+                
+                dp[i]= oneStep+twoStep;
                 }
-                if(dp[n]!=-1)
-                        return dp[n];
                 
-                int oneStep=solve(n-1,dp);
-                int twoStep=solve(n-2,dp);
-                
-                dp[n]= oneStep+twoStep;
                 return dp[n];
         }
     int climbStairs(int n) {
-        vector<int>dp(n+1,-1);
-       return solve(n,dp);
+
+       return solveTab(n);
             
     }
 };
