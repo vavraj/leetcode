@@ -19,10 +19,10 @@ public:
                 vector<int>dp(n+1,0);
                 int prev=cost[0];
                 int curr=cost[1];
-                int ans;
+                int ans,oneStep,twoStep;
                 for(int i=2;i<n;i++){                
-                int oneStep=cost[i]+curr;
-                int twoStep=cost[i]+prev;
+                oneStep=cost[i]+curr;
+                twoStep=cost[i]+prev;
 
                 ans= min(oneStep,twoStep);
                 prev=curr;
