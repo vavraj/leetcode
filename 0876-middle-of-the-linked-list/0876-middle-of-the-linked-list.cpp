@@ -13,10 +13,10 @@ public:
     ListNode* middleNode(ListNode* head) {
         ListNode*temp=head;
             int c=0;
-            while(temp!=NULL)
+            while(temp!=NULL && temp->next!=NULL)
             {
-                    c++;
-                    temp=temp->next;
+                    c=c+2;
+                    temp=temp->next->next;
             }
             c=c/2;
             temp=head;
