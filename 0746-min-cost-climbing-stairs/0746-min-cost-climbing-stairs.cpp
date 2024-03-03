@@ -15,9 +15,20 @@ public:
                 dp[n]= min(oneStep,twoStep);
                 return dp[n];
         }
+        int solveTab(int n,vector<int>&cost){
+                vector<int>dp(n+1,0);
+                dp[0]=cost[0];
+                dp[1]=cost[1];
+                for(int i=2;i<n;i++){                
+                int oneStep=cost[i]+dp[i-1];
+                int twoStep=cost[i]+dp[i-2];
+
+                dp[i]= min(oneStep,twoStep);
+                }
+                return min(dp[n-2],dp[n-1]);
+        }
     int minCostClimbingStairs(vector<int>& cost) {
         int n=cost.size();
-        vector<int>dp(n+1,-1);
-        return min(solve(n-1,cost,dp),solve(n-2,cost,dp));
+        return solveTab(n,cost);
     }
 };
